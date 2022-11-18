@@ -41,6 +41,7 @@ properties:
 required:
   - feed
   - project
+  - access
 eventOptions:
   name: feed
   events:
