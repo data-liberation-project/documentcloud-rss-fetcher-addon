@@ -1,45 +1,37 @@
-title: Scraper
+title: RSS Document Fetcher
 description: >-
-  This add-on will scrape and optionally crawl a given site for documents to upload
-  to DocumentCloud.  It can also alert you of given keywords appearing in those
-  documents.
+  Given an RSS feed where each entry's <link> element points to a document, upload those documents to DocumentCloud.
 type: object
 properties:
-  site:
-    title: Site
+  feed:
+    title: RSS/Atom Feed
     type: string
     format: uri
-    description: The URL of the site to start scraping
+    description: The URL of the feed to start scraping
+  feed_name:
+    title: Feed Name
+    type: string
+    description: The name by which you'd like to refer to the feed (e.g., in notifications). 
   project:
     title: Project
     type: string
     description: >-
-      The DocumentCloud project title or ID of the project the documents should
-      be uploaded to.  If the project title does not exist, it will be created.
-  keywords:
-    title: Keywords
+      The DocumentCloud project title or ID of the project the documents should be uploaded to. If the project title does not exist, it will be created.
+  source:
+    title: Source
     type: string
-    description: Keywords to search and notify on (comma separated)
-  filecoin:
-    title: Push to IPFS/Filecoin
-    type: boolean
     description: >-
-      WARNING: This will push all scraped files to IPFS and Filecoin.  There is
-        no way to remove files from these storage systems.
-  #filetypes:
-  #  title: File Types
-  #  type: string
-  #  description: File extensions to be uploaded to DocumentCloud (comma separated)
-  #  default: ".pdf,.docx,.xlsx,.pptx,.doc,.xls,.ppt"
-  crawl_depth:
-    title: Crawl Depth
-    type: integer
-    description: Recursively scrape same-domain links found on the page (Must be between 0 and 2)
-    default: 0
-    minimum: 0
-    maximum: 2
-  notify_all:
-    title: Notify on all new documents
+      A description or URL indicating the ultimate source of these documents.
+  access:
+    title: Access Level
+    type: string
+    default: private
+    enum:
+      - private
+      - organization
+      - public
+  notify:
+    title: Notify on new documents
     type: boolean
   slack_webhook:
     title: Slack Webhook
@@ -47,10 +39,10 @@ properties:
     format: uri
     description: Enter a slack webhook to enable Slack notifications
 required:
-  - site
+  - feed
   - project
 eventOptions:
-  name: site
+  name: feed
   events:
     - hourly
     - daily

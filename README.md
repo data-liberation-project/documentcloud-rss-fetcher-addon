@@ -1,13 +1,18 @@
+# DocumentCloud Add-On: RSS Document Fetcher 
 
-# DocumentCloud Scraper and Alerting Add-On
+This [DocumentCloud add-on](https://www.muckrock.com/news/archives/2022/mar/05/documentcloud-add-ons/) will monitor an RSS/Atom feed for documents and upload them to your DocumentCloud account. 
 
-This simple DocumentCloud scraper Add-On will monitor a given site for documents and upload them to your DocumentCloud account, alerting you to any documents that meet given keyword criteria.
+__Note__: For now, this Add-On expects that each feed entry's `<link>` element will point to PDF and that its `<title>` element will indicate the PDF's title.
 
-Documents that are scraped are tracked in a data.json file which is checked in to the repository.  If you copy this template or fork this repository, you may want to delete that file before pointing the scraper to a new site.
+This repository is forked from [`MuckRock/documentcloud-scraper-addon`](https://github.com/MuckRock/documentcloud-scraper-addon) and reuses much of its code.
 
-## Getting started with your own document alert tool
+## Potential future improvements
 
-**Important Note:** *Because of the way GitHub works, you might stumble upon these directions in a variety of directories. The canonical version lives at `https://github.com/MuckRock/documentcloud-scraper-cron-addon` so if you're on a different page and you're new to GitHub and DocumentCloud Add-Ons, we recommend going to that page for the latest instructions and most straight-forward flow. Down the road, you might want to build off other versions, but always check to make sure you trust and can verify the creators of the code.*
+- Re-add extension detection, to enable uploading of non-PDF files.
+- Re-add title detection, and give the user the option to use the feed entry's `<title>` element or the detected title.
+- Allow user to pass a regular expression or CSS selector instead of relying on each entry's `<link>` element.
+
+## Setup (via [`MuckRock/documentcloud-scraper-addon`](https://github.com/MuckRock/documentcloud-scraper-addon))
 
 ### 1) Create your accounts if needed
 
@@ -99,13 +104,9 @@ Finally, if you'd like the crawler to go through not just the primary URL you gi
 
 Once you're done with all those edits, click "Commit changes" below the text field to save your updates.
 
-### 7) Delete the old data.json file
+### 7) `[This step not required]`
 
-data.json is where the scraper stores what it has and hasn't seen before. Since this is a fresh scraper, you'll want to delete that old data. From the main repository view, click into data.json similarly to how you click into config.yaml, but instead of clicking the pencil icon, click the trash can.
-
-![Screen Shot 2022-03-22 at 9 28 09 AM](https://user-images.githubusercontent.com/136939/159492494-c61f96e9-57d8-4590-9572-b14351ccc4b4.png)
-
-Click "Confirm changes."
+[...]
 
 ### 8) Run the scraper
 
@@ -113,7 +114,6 @@ Now it's time to run the scraper for the first time. At the top of the repositor
 
 ![Screen Shot 2022-03-22 at 9 42 17 AM](https://user-images.githubusercontent.com/136939/159495167-1c96e745-4cec-42a1-9b04-b740a60d9252.png)
 
-If succesful, the Add-On will grab all the documents it can pull from the site, load them into DocumentCloud, and then send you an email. It will now run hourly and will only alert you if it pulls new documents, with a second alert highlighting any documents that meet your key terms.
+If succesful, the Add-On will grab all the documents it can pull from the site *[Ed.: feed]*, load them into DocumentCloud, and then send you an email. It will now run hourly and will only alert you if it pulls new documents~~, with a second alert highlighting any documents that meet your key terms~~.
 
 This is a relatively simple Add-On, but one of the powerful things about this approach is that it can be mixed and matched with other tools. Once your comfortable with the basics, [you can explore other example Add-Ons](https://www.documentcloud.org/help/add-ons/) that let you automatically extract data, use machine learning to classify documents into categories, and more. [Subscribe to the DocumentCloud newsletter](https://muckrock.us2.list-manage.com/subscribe?u=74862d74361490eca930f4384&id=89227411b1) to get more examples of code and opportunities to get help building out tools that help your newsroom needs.
-
