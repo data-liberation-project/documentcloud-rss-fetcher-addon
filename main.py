@@ -44,7 +44,7 @@ class Fetcher(AddOn):
             query = f"+project:{self.project} data_url:{doc.fixed_url}"
             found = list(self.client.documents.search(query))
 
-            if len(found):
+            if found:
                 continue
 
             print("📄 New link:", entry.link)
