@@ -4,7 +4,7 @@ This [DocumentCloud add-on](https://www.muckrock.com/news/archives/2022/mar/05/d
 
 __Note__: For now, this Add-On expects that each feed entry's `<link>` element will point to PDF and that its `<title>` element will indicate the PDF's title.
 
-This repository is forked from [`MuckRock/documentcloud-scraper-addon`](https://github.com/MuckRock/documentcloud-scraper-addon) and reuses much of its code.
+This repository is forked from [`MuckRock/documentcloud-scraper-addon`](https://github.com/MuckRock/documentcloud-scraper-addon) and reuses much of its code. The codebase feeds from [this fork](https://github.com/data-liberation-project/documentcloud-rss-fetcher-addon).
 
 ## Setup
 ### 1) Create your accounts if needed
@@ -29,4 +29,4 @@ Click on the Add-Ons dropdown menu -> "Browse All Add-Ons" -> "RSS Document Fetc
 
 ## Questions
 
-Open an issue in this repository or email Jeremy Singer-Vine at `jsvine@gmail.com`.
+Open an issue in [this repository](https://github.com/data-liberation-project/documentcloud-rss-fetcher-addon) or email Jeremy Singer-Vine at `jsvine@gmail.com`.
